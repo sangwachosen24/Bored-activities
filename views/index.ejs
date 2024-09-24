@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activities</title>
+  <link rel="stylesheet" type="text/css" href="/styles/main.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Activities API</h1>
+
+    <form id="filterForm" method="GET" action="/">
+      <label for="participants">Participants:</label>
+      <select name="participants" id="participants">
+        <option value="">All</option>
+        <option value="1">1 Person</option>
+        <option value="2">2 People</option>
+        <option value="3">3 People</option>
+      </select>
+
+      <label for="category">Category:</label>
+      <select name="category" id="category">
+        <option value="">All</option>
+        <option value="entertainment">Entertainment</option>
+        <option value="sports">Sports</option>
+        <option value="outdoor">Outdoor</option>
+        <option value="romantic">romantic</option>
+      </select>
+
+      <button type="submit">Filter</button>
+    </form>
+
+    <ul id="activitiesList">
+      <% if (activities && activities.length > 0) { %>
+        <% activities.forEach(activity => { %>
+          <li>
+            <h3><%= activity.name %></h3>
+            <p><strong>Participants:</strong> <%= activity.participants %></p>
+            <p><strong>Category:</strong> <%= activity.category %></p>
+          </li>
+        <% }); %>
+      <% } else { %>
+        <li>No activities found. Please adjust the filters.</li>
+      <% } %>
+    </ul>
+  </div>
+</body>
+
+</html>
